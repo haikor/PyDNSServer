@@ -1,10 +1,11 @@
 # PyDNSServer
 一个Python实现的简单的可配置的DNS服务程序。
 
-支持域名完全匹配（相等）或正则匹配（re.match）。比如***www.baidu.com***对应***www.baidu.com***，***\S+\.baidu\.com***对应任意的baidu.com二级域名，比如***img.baidu.com***、***cloud.baidu.com***等
+支持域名完全匹配（相等）或正则匹配（re.match,re.sub）。比如***www.baidu.com***对应***www.baidu.com***，***\S+\.baidu\.com***对应任意的baidu.com二级域名，比如***img.baidu.com***、***cloud.baidu.com***等
 
 支持指定ip、允许、禁止策略：
 * 指定ip: 直接返回该指定的ip地址
+* 支持正则替换: 根据正则替换生成ip地址
 * 允许: 返回该域名对应的正真ip地址
 * 禁止: 不对该域名进行解析，即返回解析失败
 
@@ -33,6 +34,9 @@ www.baidu.com allow
 
 # set www.qq.com with ip 192.168.0.100
 www.qq.com 192.168.0.100
+
+# set 10.1.1.1.xxx.com with ip 10.1.1.1
+(\d+\.\d+\.\d+\.\d+)\..* \1 
 
 # deny other hostname
 .* deny
