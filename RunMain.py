@@ -12,7 +12,7 @@ filters = [
 	('baidu.com', 'allow'),
 	('360.com', 'deny'),
 	('qq.com', '192.168.0.100'),
-	('.*', 'deny'),
+	('.*', 'allow'),
 ]
 
 class FilterHandler(DNSQueryHandler):
@@ -25,7 +25,7 @@ class FilterHandler(DNSQueryHandler):
 				elif v == 'allow':
 					ip = self.queryip(hostname)
 				else:
-					ip = v
+					ip = re.sub(p,v,hostname) 
 				print '%s %s %s'%(self.client_address[0], hostname, ip)
 				return ip
 		
