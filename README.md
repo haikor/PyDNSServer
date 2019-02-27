@@ -47,6 +47,20 @@ www.qq.com 192.168.0.100
 > \# python RunMain.py
 
 直接在本机测试：
-> \> nslookup www.baidu.com 1270.0.0.1
+> \> nslookup www.baidu.com 127.0.0.1
 
-> \> nslookup www.360.com 1270.0.0.1
+> \> nslookup www.360.com 127.0.0.1
+
+> \> nslookup 10.2.0.215.xxx.com 127.0.0.1
+
+### 正则替换应用场景：
+
+在阿里云内选择“将子域名指定其他DNS服务器解析”，将 *.ip.haikor.top解析到 nds.haikor.top(本服务)
+
+这样在任何地方都能够通过 10.2.0.215.ip.haikor.top 的方式访问 10.2.0.215。
+
+假设同一个开发电脑里配置了N个web项目，只要按照规范配置IIS或者Nginx绑定不同的域名，就可以通过域名内指定ip及项目名的方式访问不同电脑的不同项目，如：
+* 10.2.0.215.proj1.ip.haikor.top
+*  10.2.0.215.proj2.ip.haikor.top
+* 10.2.0.200.proj1.ip.haikor.top
+* 10.2.0.200.proj2.ip.haikor.top
